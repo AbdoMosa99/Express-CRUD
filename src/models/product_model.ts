@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+
 type ProductDocument = mongoose.Document & {
     name: string,
     description: string | null,

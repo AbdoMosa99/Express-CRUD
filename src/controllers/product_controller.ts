@@ -1,5 +1,7 @@
 import { Request, Response } from "express";
+
 import { Product, ProductInput } from "../models/product_model";
+
 
 const createproduct = async (req: Request, res: Response) => {
   const { name, description, price } = req.body;
@@ -7,7 +9,7 @@ const createproduct = async (req: Request, res: Response) => {
   if (!name || !price) {
     // return an unprocessable entity status code
     return res.status(422).json({
-      message: "The fields name and price are required",
+      message: "The fields, name and price, are required!",
     });
   }
 
@@ -18,8 +20,8 @@ const createproduct = async (req: Request, res: Response) => {
   };
 
   try {
-    const productCreated = await Product.create(productInput);
-    return res.status(201).json({ product: productCreated });
+    const productCreated = await Product.create(productInput)
+    return res.status(201).json({ _id: productCreated._id });
   }
   catch (e: unknown) {
     // return a conflict if product already exists
@@ -30,9 +32,10 @@ const createproduct = async (req: Request, res: Response) => {
 };
 
 const getAllproducts = async (req: Request, res: Response) => {
-    const products = await Product.find().sort('-createdAt').exec();
+  const products = await Product.find().select("_id name description price").exec();
 
-    return res.status(200).json({ result: products });
+  return res.status(200).json({ result: products });
 };
+
 
 export { createproduct, getAllproducts };
