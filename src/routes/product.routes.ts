@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import * as controllers from "../controllers/product_controller"
+import * as controllers from "../controllers/product.controllers"
 
 
 const productRoute = () => {

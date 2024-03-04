@@ -2,8 +2,8 @@ import mongoose from "mongoose";
 import * as express from "express";
 import * as bodyParser from "body-parser";
 
-import { productRoute } from "../routes/product_routes";
-import { commonRoutes } from "../routes/common_routes";
+import { productRoute } from "./routes/product.routes";
+import { commonRoutes } from "./routes/common.routes";
 
 
 class App {
@@ -14,7 +14,7 @@ class App {
 
         this.config();
 
-        this.app.use("/v1/api/products", productRoute());
+        this.app.use("/api/v1/products", productRoute());
         this.app.use("/", commonRoutes());
 
         mongoose.connect('mongodb://127.0.0.1:27017/cequens');

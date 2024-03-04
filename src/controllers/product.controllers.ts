@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 
-import { Product, ProductInput } from "../models/product_model";
+import { Product, ProductInput } from "../models/product.model";
 
 
 const createproduct = async (req: Request, res: Response) => {
