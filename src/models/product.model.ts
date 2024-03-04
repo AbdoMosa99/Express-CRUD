@@ -7,12 +7,6 @@ type ProductDocument = mongoose.Document & {
     price: number,
 };
 
-type ProductInput = {
-    name: ProductDocument["name"];
-    description: ProductDocument["description"];
-    price: ProductDocument["price"];
-};
-
 const productSchema = new mongoose.Schema(
     {
         name: {
@@ -37,4 +31,4 @@ const productSchema = new mongoose.Schema(
 
 const Product: mongoose.Model<ProductDocument> = mongoose.model<ProductDocument>("Product", productSchema);
 
-export {Product, ProductInput, ProductDocument}
+export { Product };

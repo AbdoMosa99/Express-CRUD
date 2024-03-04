@@ -6,8 +6,8 @@ import * as controllers from "../controllers/product.controllers"
 const productRoute = () => {
   const router = Router();
   
-  router.post("/", controllers.createproduct);
-  router.get("/", controllers.getAllproducts);
+  router.post("/", controllers.createProduct);
+  router.get("/", controllers.getAllProducts);
 
   // TODO
   // router.get("/products/:id", (req, res) => {});
