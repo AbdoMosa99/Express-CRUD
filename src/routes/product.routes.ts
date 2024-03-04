@@ -8,11 +8,11 @@ const productRoute = () => {
   
   router.post("/", controllers.createProduct);
   router.get("/", controllers.getAllProducts);
+  router.delete("/:id", controllers.deleteProduct);
 
   // TODO
-  // router.get("/products/:id", (req, res) => {});
-  // router.put("/products/:id", (req, res) => {});
-  // router.delete("/products/:id", (req, res) => {});
+  // router.get("/:id", (req, res) => {});
+  // router.put("/:id", (req, res) => {});
   
   return router;
 };

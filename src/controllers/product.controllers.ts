@@ -31,6 +31,7 @@ const createProduct = async (req: Request, res: Response) => {
   return res.status(201).json({ _id: productCreated._id });
 };
 
+
 const getAllProducts = async (req: Request, res: Response) => {
   const products = await Product.find().select("_id name description price").exec();
 
@@ -38,4 +39,20 @@ const getAllProducts = async (req: Request, res: Response) => {
 };
 
 
-export { createProduct, getAllProducts };
+const deleteProduct = async (req: Request, res: Response) => {
+  const { id } = req.params;
+
+  try {
+    await Product.findByIdAndDelete(id);
+    return res.status(200).json({
+      message: "Deleted successfully.",
+    });
+  }
+  catch (e) {
+    return res.status(404).json({
+      message: "Product not found!",
+    });
+  }
+}
+
+export { createProduct, getAllProducts, deleteProduct };
